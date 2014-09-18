@@ -17,6 +17,4 @@ if numel(pD)>1
     error('Method works only for a single DiscreteD object');
 end;
 
-%*** Insert your own code here and remove the following error message 
-
-error('Not yet implemented');
+R = randsample(length(pD.ProbMass), nData, true, pD.ProbMass)
