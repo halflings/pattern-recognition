@@ -17,4 +17,4 @@ if numel(pD)>1
     error('Method works only for a single DiscreteD object');
 end;
 
-R = randsample(length(pD.ProbMass), nData, true, pD.ProbMass)
+R = randsample(length(pD.ProbMass), nData, true, pD.ProbMass);
