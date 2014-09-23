@@ -1,0 +1,10 @@
+q = [0.75; 0.25];
+A = [0.99 0.01; 0.03 0.97];
+b1 = GaussD('Mean',0,'StDev',1);
+b2 = GaussD('Mean',3,'StDev',2);
+b3 = GaussD('Mean',0,'StDev',2);
+B = [b1;b2];
+B2 = [b1;b3];
+mc = MarkovChain(q,A);
+h = HMM(mc, B);
+h2 = HMM(mc, B2);
