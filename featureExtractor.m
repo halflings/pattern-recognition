@@ -1,36 +1,39 @@
 X = DrawCharacter;
 
-ind1 = 0;
-ind2 = 0;
-for i=1:length(X),
+Xred = [];
+for i = 1:length(X),
     if X(3,i) == 1,
-        ind1 = i;
-        break;
+        Xred(:,length(Xred)+1) = X(1:2,i);
     end
 end
 
-for i = sort(1:length(X), 'descend'),
-    if X(3,i) == 1,
-        ind2 = i+1;
-        break;
-    end
-end
+averageX = sum(Xred(1,:)) / length(Xred);
+averageY = sum(Xred(2,:)) / length(Xred);
 
-ind2 = ind2 - ind1;
+dX = 0.5 - averageX;
+dY = 0.5 - averageY;
 
-P = X(1:3,ind1:length(X));
-P = P(1:3,1:ind2);
-xDeltaM = [];
-for i = 1:length(P)-1,
-    xDeltaM(i) = (P(1,i+1) - P(1,i));
-end
+Xred(1,:) = Xred(1,:) + dX;
+Xred(2,:) = Xred(2,:) + dY;
+
+xDeltaM = Xred(1,:);
+yDeltaM = Xred(2,:);
+
+averageX = sum(xDeltaM) / length(xDeltaM);
+averageY = sum(yDeltaM) / length(yDeltaM);
+dX = 0.5 - averageX;
+dY = 0.5 - averageY;
+
+xDeltaM = xDeltaM + dX;
+yDeltaM = yDeltaM + dY;
+
+minst = min(xDeltaM);
 norm = max(abs(xDeltaM));
-xDeltaM = xDeltaM/norm;
-yDeltaM = [];
-for i = 1:length(P)-1,
-    yDeltaM(i) = (P(2,i+1) - P(2,i));
-end
+xDeltaM = (xDeltaM - minst)/norm;
+
+minst = min(yDeltaM);
 norm = max(abs(yDeltaM));
-yDeltaM = yDeltaM/norm;
-plot(1:length(P)-1, [xDeltaM; yDeltaM]);
-axis([1 length(P)-1 -1 1]);
+yDeltaM = (yDeltaM - minst)/norm;
+
+plot(1:length(xDeltaM), [xDeltaM;yDeltaM]);
+axis([0 length(xDeltaM) 0 1]);
