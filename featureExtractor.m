@@ -24,13 +24,13 @@ Xred(2,:) = Xred(2,:) + dY;
 xDeltaM = Xred(1,:);
 yDeltaM = Xred(2,:);
 
-minst = min(xDeltaM);
+minst = min([xDeltaM yDeltaM]);
 xDeltaM = xDeltaM - minst;
-minst = min(yDeltaM);
+%minst = min(yDeltaM);
 yDeltaM = yDeltaM - minst;
 norm = max(abs([xDeltaM yDeltaM]));
 xDeltaM = xDeltaM/norm;
 yDeltaM = yDeltaM/norm;
 
-plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*5)/5);
-axis([0 length(xDeltaM) 0 1]);
+plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*10));
+axis([0 length(xDeltaM) 0 10]);
