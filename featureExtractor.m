@@ -33,5 +33,5 @@ yDeltaM = yDeltaM - minst;
 norm = max(abs(yDeltaM));
 yDeltaM = yDeltaM/norm;
 
-plot(1:length(xDeltaM), [xDeltaM;yDeltaM]);
+plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*5)/5);
 axis([0 length(xDeltaM) 0 1]);
