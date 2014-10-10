@@ -26,11 +26,10 @@ yDeltaM = Xred(2,:);
 
 minst = min(xDeltaM);
 xDeltaM = xDeltaM - minst;
-norm = max(abs(xDeltaM));
-xDeltaM = xDeltaM/norm;
 minst = min(yDeltaM);
 yDeltaM = yDeltaM - minst;
-norm = max(abs(yDeltaM));
+norm = max(abs([xDeltaM yDeltaM]));
+xDeltaM = xDeltaM/norm;
 yDeltaM = yDeltaM/norm;
 
 plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*5)/5);
