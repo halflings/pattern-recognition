@@ -50,7 +50,7 @@ T=size(pX,2);%Number of observations
 betaHat = [];
 [a, b] = size(mc.TransitionProb);
 N = mc.nStates();
-if(a ~= b),
+if(a == b),
     for i = 1:N,
         betaHat(i,T) = 1/c(T); 
     end
