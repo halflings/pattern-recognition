@@ -1,3 +1,4 @@
+function [X]=featureExtractor()
 X = DrawCharacter;
 
 Xred = [];
@@ -32,5 +33,5 @@ norm = max(abs([xDeltaM yDeltaM]));
 xDeltaM = xDeltaM/norm;
 yDeltaM = yDeltaM/norm;
 
-plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*10));
-axis([0 length(xDeltaM) 0 10]);
+%plot(1:length(xDeltaM), round([xDeltaM;yDeltaM]*10));
+%axis([0 length(xDeltaM) 0 10]);
