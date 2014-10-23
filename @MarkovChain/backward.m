@@ -47,9 +47,10 @@ T=size(pX,2);%Number of observations
 
 %-------------------- continue code from here, and delete error message
 
-betaHat = [];
 [a, b] = size(mc.TransitionProb);
 N = mc.nStates();
+betaHat = zeros(N, T);
+
 if(a == b),
     for i = 1:N,
         betaHat(i,T) = 1/c(T); 
