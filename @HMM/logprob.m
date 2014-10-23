@@ -26,15 +26,14 @@
 %Code Authors:
 %----------------------------------------------------
 
-function logP=logprob(hmm,x)
-hmmSize=size(hmm);%size of hmm array
-T=size(x,2);%number of vector samples in observed sequence
+function [logP] = logprob(hmm,x)
+hmmSize=size(hmm); %size of hmm array
 logP=zeros(hmmSize);%space for result
-for i=1:numel(hmm)%for all HMM objects
-    %Note: array elements can always be accessed as hmm(i),
-    %regardless of hmmSize, even with multi-dimensional array.
-    %
-    %logP(i)= result for hmm(i)
-    %continue coding from here, and delete the error message.
-    error('Not yet implemented');
+for i=1:numel(hmm)
+    hmmObj = hmm(i);
+
+    pX = prob(hmmObj.OutputDistr, x);
+    [alphas, c] = forward(hmmObj.StateGen, pX);
+
+    logP(i)= log(sum(alphas(end)) - sum(log(c)));
 end;
