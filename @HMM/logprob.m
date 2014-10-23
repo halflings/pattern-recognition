@@ -34,6 +34,6 @@ for i=1:numel(hmm)
 
     pX = prob(hmmObj.OutputDistr, x);
     [alphas, c] = forward(hmmObj.StateGen, pX);
-
-    logP(i)= log(sum(alphas(end)) - sum(log(c)));
+    
+    logP(i)= log(sum(alphas(end))) + sum(log(c));
 end;
