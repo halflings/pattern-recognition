@@ -13,6 +13,7 @@ for k_i=1:length(features)
         [~, argmax_prob] = max(probs, [], 2);
         confusionMatrix(k_i, argmax_prob) = confusionMatrix(k_i, argmax_prob) + 1;
     end
+    confusionMatrix(k_i, :) = confusionMatrix(k_i, :)  / sum(confusionMatrix(k_i, :));
 end
 
 
