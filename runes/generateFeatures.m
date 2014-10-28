@@ -3,7 +3,7 @@ features = containers.Map();
 r_keys = keys(raw);
 
 for k_i=1:size(raw)
-    key = cell2mat(r_keys(k_i))
+    key = cell2mat(r_keys(k_i));
 
     fdbs = {};
     rdbs = raw(key);
