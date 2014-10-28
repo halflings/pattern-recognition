@@ -1,4 +1,4 @@
-function featureSet = featureExtractor(charData, resolution)
+function featureSet = featureExtractor(charData)
 
 Xred = [];
 % Remove cols where third row has 0
@@ -28,10 +28,8 @@ norm = max(abs([xDeltaM yDeltaM]));
 xDeltaM = xDeltaM/norm;
 yDeltaM = yDeltaM/norm;
 featureSet = [xDeltaM; yDeltaM]';
-featureSet = sortrows(featureSet)';
-
-
-featureSet = round(featureSet*resolution);
+%featureSet = sortrows(featureSet);
+featureSet = featureSet';
 
 %plot(1:length(featureSet), featureSet);
-%axis([0 length(featureSet) 0 resolution]);
+%axis([0 length(featureSet) 0 1]);

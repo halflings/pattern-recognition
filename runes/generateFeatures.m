@@ -1,4 +1,4 @@
-function [ features ] = generateFeatures(raw, resolution)
+function [ features ] = generateFeatures(raw)
 features = containers.Map();
 r_keys = keys(raw);
 
@@ -10,7 +10,7 @@ for k_i=1:size(raw)
 
     for i=1:length(rdbs)
         rawData = cell2mat(rdbs(i));
-        extractedFeatures = featureExtractor(rawData, resolution);
+        extractedFeatures = featureExtractor(rawData);
         fdbs(length(fdbs)+1) = {extractedFeatures};
     end
     
