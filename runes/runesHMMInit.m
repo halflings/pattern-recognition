@@ -1,18 +1,32 @@
-function [ hmms ] = runesHMMInit(nemissions, nstates, nhmms)
+function [ hmms ] = runesHMMInit(nEmissions, nStates, features)
 % Initializing discrete-valued HMMs
 
-if nargin < 3
-    nhmms = 5;
-end
+numHMM = length(features);
+numHMM = 1 % just for debugging
+symbols = keys(features);
+for h=1:numHMM
+    key = cell2mat(symbols(h));
+    fdb = features(key);
 
-for i=1:nhmms
-    p0 = ones(1, nstates) / nstates;
-    A = ones(nstates, nstates + 1) / (nstates + 1);
-    B = ones(nstates, nemissions) / nemissions;
-    mc = MarkovChain(p0, A);
-    pD = DiscreteD(B);
-    
-    hmms(i) = HMM(mc,pD);
+    obsData = [];
+    numObs = length(fdb);
+    lData = zeros(1, numObs);
+    for obs_i=1:numObs
+        observations = cell2mat(fdb(obs_i));
+        lData(obs_i) = size(observations, 2);
+        obsData = [obsData observations];
+    end
+
+    B = ones(nStates, nEmissions) / nEmissions;
+    for s=1:nStates
+        B(s,:)
+        pD(s) = DiscreteD(B(s,:));
+    end
+
+    pD
+
+    lData
+    hmms(i) = MakeLeftRightHMM(nStates, pD, obsData, lData)
 end
 
 end
