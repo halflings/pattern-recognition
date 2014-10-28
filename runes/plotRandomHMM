@@ -1,0 +1,8 @@
+function plotRandomHMM(hmms, i)
+
+RAND = hmms(i).rand(300);
+
+plot(1:length(RAND), RAND);
+
+
+end
