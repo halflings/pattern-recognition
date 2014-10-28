@@ -16,5 +16,6 @@ function R=rand(pD,nData)
 if numel(pD)>1
     error('Method works only for a single DiscreteD object');
 end;
+A = full(pD.ProbMass);
 
-R = randsample(length(pD.ProbMass), nData, true, pD.ProbMass);
+R = randsample(length(A), nData, true, A);
