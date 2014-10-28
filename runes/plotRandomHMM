@@ -2,7 +2,10 @@ function plotRandomHMM(hmms, i)
 
 RAND = hmms(i).rand(300);
 
+% Plots Feature Vector
 plot(1:length(RAND), RAND);
 
+% Plots Y over X, may remake the figure
+%plot(RAND(1,:), RAND(2,:));
 
 end
