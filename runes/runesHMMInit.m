@@ -18,7 +18,7 @@ for h=1:numHMM
     end
 
     for s=1:nStates
-        pD(s) = GaussD('Mean',[0.5 0.5],'StDev',[0.01 0.01]);
+        pD(s) = GaussD('Mean',[0.5;0.5],'StDev',[0.01;0.01]);
     end
 
     trainedHMM = MakeLeftRightHMM(nStates, pD, obsData, lData)
