@@ -1,8 +1,7 @@
-function [ hmms ] = runesHMMInit(nEmissions, nStates, features)
+function [ hmms ] = runesHMMInit(nStates, features)
 % Initializing discrete-valued HMMs
 
 numHMM = length(features);
-numHMM = 1 % just for debugging
 symbols = keys(features);
 for h=1:numHMM
     key = cell2mat(symbols(h));
@@ -17,16 +16,12 @@ for h=1:numHMM
         obsData = [obsData observations];
     end
 
-    B = ones(nStates, nEmissions) / nEmissions;
     for s=1:nStates
-        B(s,:)
-        pD(s) = DiscreteD(B(s,:));
+        pD(s) = GaussD('Mean',[7 7],'StDev',[2 2]);
     end
 
-    pD
-
-    lData
-    hmms(i) = MakeLeftRightHMM(nStates, pD, obsData, lData)
+    trainedHMM = MakeLeftRightHMM(nStates, pD, obsData, lData)
+    hmms(h) = trainedHMM;
 end
 
 end
