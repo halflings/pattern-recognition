@@ -9,7 +9,7 @@ for h=1:numHMM
 
     obsData = [];
     numObs = length(fdb);
-    numTrainingObs = round(numObs * trainingRatio);
+    numTrainingObs = floor(numObs * trainingRatio);
     lData = zeros(1, numTrainingObs);
     for obs_i=1:numTrainingObs
         observations = cell2mat(fdb(obs_i));
