@@ -1,4 +1,4 @@
-TRAINING_FACTOR = 0.5;
+TRAINING_FACTOR = 0.7;
 NUM_STATES = 8;
 
 features = generateFeatures(raw);
@@ -18,8 +18,8 @@ while (enemyHP > 0 && HP > 0)
     fprintf('----------------------------------------------------------\n');
     fprintf('                                      \n');
     fprintf('######################################\n');
-    fprintf('## HP: %i / %i                        \n', HP);
-    fprintf('## Enemy HP: %i / %i                  \n', enemyHP);
+    fprintf('## HP: %i / %i                        \n', HP, fullHP);
+    fprintf('## Enemy HP: %i / %i                  \n', enemyHP, enemyFullHP);
     fprintf('######################################\n');
     fprintf('                                      \n');
 
@@ -30,7 +30,8 @@ while (enemyHP > 0 && HP > 0)
     
     % Attack by the enemy
     dmg = 1 + round(rand() * 4);
-    fprintf('  ! Your enemy attacks and inflicts %i damage.', dmg);
+    fprintf('  # ENEMY TURN:\n');
+    fprintf('  ! Your enemy attacks and inflicts %i damage.\n\n', dmg);
     HP =  HP - dmg;
     if (HP <= 0)
         break;
@@ -38,11 +39,20 @@ while (enemyHP > 0 && HP > 0)
     
     % Getting the casted runes
     rune1Id = guessRune(hmms);
+    while (rune1Id == -1)
+        fprintf('  ! Could not recognize the drawn rune, please repeat.\n');
+        rune1Id = guessRune(hmms);
+    end
     rune1 = cell2mat(k(rune1Id));
     
+    fprintf('  # YOUR TURN:\n');
     fprintf('  . The first rune you cast is "%s"\n', rune1);
     
     rune2Id = guessRune(hmms);
+    while (rune2Id == -1)
+        fprintf('  ! Could not recognize the drawn rune, please repeat.\n');
+        rune2Id = guessRune(hmms);
+    end
     rune2 = cell2mat(k(rune2Id));
 
     fprintf('  . The second rune you cast is "%s"\n', rune2);
