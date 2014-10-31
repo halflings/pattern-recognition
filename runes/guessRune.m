@@ -4,7 +4,7 @@ function [ symbolNum ] = guessRune(hmms)
     % If something was drawn
     if (sum(rawData(3,:) == 1) ~= 0)
         extractedFeatures = featureExtractor(rawData);
-        probs = logprob(hmms, extractedFeatures)
+        probs = logprob(hmms, extractedFeatures);
         [~, symbolNum] = max(probs, [], 2);
     end
 

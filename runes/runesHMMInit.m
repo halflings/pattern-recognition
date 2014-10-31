@@ -7,6 +7,8 @@ for h=1:numHMM
     key = cell2mat(symbols(h));
     fdb = features(key);
 
+    fprintf('. Training HMM %i for "%s"\n', h, key);
+    
     obsData = [];
     numObs = length(fdb);
     numTrainingObs = floor(numObs * trainingRatio);
@@ -21,7 +23,7 @@ for h=1:numHMM
         pD(s) = GaussD('Mean',[0.5;0.5],'StDev',[0.01;0.01]);
     end
 
-    trainedHMM = MakeLeftRightHMM(nStates, pD, obsData, lData)
+    trainedHMM = MakeLeftRightHMM(nStates, pD, obsData, lData);
     hmms(h) = trainedHMM;
 end
 
