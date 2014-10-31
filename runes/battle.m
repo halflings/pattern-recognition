@@ -1,4 +1,4 @@
-TRAINING_FACTOR = 0.7;
+TRAINING_FACTOR = 0.5;
 NUM_STATES = 8;
 
 features = generateFeatures(raw);

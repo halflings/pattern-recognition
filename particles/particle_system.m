@@ -49,7 +49,15 @@ classdef particle_system < handle
             
             set (Particle_System.graphics_handle, 'renderer', 'opengl')
             
-            
+            % Arx fatalis background
+            a = axes('Position',[0 0 1 1],'Units','Normalized');
+            ah = axes('unit', 'normalized', 'position', [0 0 1 1]);
+            bg = imread('arx.jpg'); imagesc(bg);
+            set(ah,'handlevisibility','off','visible','off')
+            set(gcf, 'Color', 'None');
+            set(gca, 'Color', 'None');
+            uistack(ah, 'bottom');
+
         end
         
         function advance_time (Particle_System, step_time)
