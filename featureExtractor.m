@@ -10,6 +10,8 @@ for i = 1:length(charData),
 end
 Xred = [Xred(1:3,1) Xred(1:3, 4:length(Xred))];
 
+% SORT FIRST: Xred = sortrows(Xred')';
+% ADD NOISE: Xred = Xred + 0.002*(0.5-rand(size(Xred)));
 % Normalise position to O = (0.5, 0.5)
 averageX = sum(Xred(1,:)) / length(Xred);
 averageY = sum(Xred(2,:)) / length(Xred);
