@@ -90,7 +90,7 @@ while (enemyHP > 0 && HP > 0)
     disp('    !! These runes do not form a spell. Better luck next time!');
 end
 
-if (enemyHP == 0)
+if (enemyHP <= 0)
     disp('You triumphed and killed your enemy! (and won lots of XP, gold and course credits');
 else
     disp('You were terrible at drawing things and doing sorcery, you lose!');
